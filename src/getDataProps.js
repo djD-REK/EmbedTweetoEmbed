@@ -37,9 +37,15 @@ export const getDataProps = (utils, props) => {
 
   const errorMessage = "<p>Sorry, Tweet preview is not available.</p>"
 
-  return twitterPromise.then((value) => (value ? value.html : errorMessage))
+  return twitterPromise.then((value) =>
+    value ? jsonEscape(value.html) : errorMessage
+  )
   // If the Promise didn't work for some reason, then you can't access the
   // property value.html, so you need to return a message to avoid a TypeError.
+  // 
+  // For Tweets specifically, the Promise will fail locally without using a
+  // CORS browser extension, and it will also not work at all in VOLT's Site
+  // Designer. The Promise will work normally in live & preview VOLT Stores.
 
   // If you are returning multiple Promises, such as when retrieving several
   // social media posts, the function Promise.all can use an array of Promises:
