@@ -1,12 +1,12 @@
 import { ElementPropTypes } from "@volusion/element-proptypes"
 
 export const configSchema = {
-  text: {
-    label: "Text content",
+  embedTweetURL: {
+    label: "Twitter URL to embed",
     type: ElementPropTypes.string,
   },
 }
 
 export const defaultConfig = {
-  text: "Element Starter Block",
+  embedTweetURL: "https://twitter.com/Twitter/status/1247570151064637442",
 }
